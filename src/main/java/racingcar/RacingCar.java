@@ -21,7 +21,7 @@ public class RacingCar {
     /**
      * 이름 반환
      *
-     * @return
+     * @return 이름
      */
     public String getName() {
         return name;
@@ -30,7 +30,7 @@ public class RacingCar {
     /**
      * 현재 위치 반환
      *
-     * @return
+     * @return 현재 위치
      */
     public int getPosition() {
         return position;
