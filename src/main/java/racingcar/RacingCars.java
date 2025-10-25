@@ -39,18 +39,13 @@ public class RacingCars {
      * @return 우승자 이름 리스트
      */
     public List<String> getWinners() {
-        List<String> winners = new ArrayList<>();
-        int max = 0;
-        for (RacingCar c : cars) {
-            if (c.getPosition() > max) {
-                max = c.getPosition();
-            }
-        }
-        for (RacingCar c : cars) {
-            if (c.getPosition() == max) {
-                winners.add(c.getName());
-            }
-        }
-        return winners;
+        int max = cars.stream()
+                .mapToInt(RacingCar::getPosition)
+                .max()
+                .orElse(0);
+        return cars.stream()
+                .filter(c -> c.getPosition() == max)
+                .map(RacingCar::getName)
+                .collect(java.util.stream.Collectors.toList());
     }
 }
